@@ -1,4 +1,4 @@
-
+﻿
 
 #include <iostream>
 #include<vector>
@@ -26,14 +26,17 @@ struct stUsers
 {
     string Name;
     string Password;
-    enPermaission Permission;
+    int Permission;
     bool flag = false;
 
 };
+void MessagePermission();
 void ShowTransAction();
 void ShowMainMenue();
+bool CheckPermission(enPermaission check);
 void ShowManageUsersScreen();
 void  login();
+void GoToMainMenue();
 stUsers CurrentUser;
 bool isfound(string account, stinfo& client, vector<stinfo>& Vword)
 {
@@ -227,7 +230,7 @@ stUsers ConvertFromFileUsersToStructUsers(string name, string delim = "#//#") {
     vector<string>Vusers = split(name, delim);
     User.Name = Vusers[0];
     User.Password = Vusers[1];
-    User.Permission = enPermaission(stoi(Vusers[2])) ;
+    User.Permission = stoi(Vusers[2]) ;
 
 
     return User;
@@ -395,7 +398,14 @@ void PrintAllUsersInSystem() {
 
 
 }
-void printAllVectors() {
+void printAllClients() {
+    if (!CheckPermission(enPermaission::enAllPermission)) {
+        MessagePermission();
+        GoToMainMenue();
+
+
+    }
+
     vector<stinfo>Vword = loadfromfile(FileClient);
     cout << space(4) << "Client List (" << Vword.size() << ")  " << "Client(s)" << endl;
     cout << "--------------------------------------------------------------------------------------------------------\n";
@@ -685,9 +695,9 @@ bool IsNameFindInFile(string Name, string filename) {
 
 
 }
-enPermaission ReadPermissionUsers() {
+int ReadPermissionUsers() {
     char ch = 'n';
-    enPermaission permission=(enPermaission)0;
+    int permission=0;
     cout << "Do you want give full access? (y/n)?";
     cin >> ch;
     if (tolower(ch) =='y') {
@@ -700,42 +710,42 @@ enPermaission ReadPermissionUsers() {
             cout << "Show Client List? y/n?";
             cin >> ch;
             if (tolower(ch) == 'y')
-            { permission = (enPermaission)(permission | enPermaission::enShowClientPermission); }
+            { permission |=  enPermaission::enShowClientPermission; }
             cout << "Add New Client ? y / n ?";
             cin >> ch;
             if (tolower(ch) == 'y')
             {
-                permission = (enPermaission) (permission | enPermaission::enAddClientPermission);
+                permission |=  enPermaission::enAddClientPermission;
             }
             cout << "Delete Client ? y / n ?";
             cin >> ch;
             if (tolower(ch) == 'y')
             {
-                permission = (enPermaission)(permission | enPermaission::enDeleteClientPermassion);
+                permission |=  enPermaission::enDeleteClientPermassion;
             }
             cout << "Update Client ? y / n?";
             cin >> ch;
             if (tolower(ch) == 'y')
             {
-                permission = (enPermaission)(permission | enPermaission::enUpdateClientPermassion);
+                permission |=  enPermaission::enUpdateClientPermassion;
             }
             cout << "Find Client ? y / n?";
             cin >> ch;
             if (tolower(ch) == 'y')
             {
-                permission = (enPermaission)(permission | enPermaission::enFindClientPermassion);
+                permission |=  enPermaission::enFindClientPermassion;
             }
             cout << "Transactions ? y / n ?";
             cin >> ch;
             if (tolower(ch) == 'y')
             {
-                permission = (enPermaission)(permission | enPermaission::enTransactionpermission);
+                permission |= enPermaission::enTransactionpermission;
             }
             cout << "Manage Users ? y / n ?";
             cin >> ch;
             if (tolower(ch) == 'y')
             {
-                permission = (enPermaission)(permission | enPermaission::enManageUsers);
+                permission |= enPermaission::enManageUsers;
             }
 
     }
@@ -938,6 +948,12 @@ bool EditClient(vector<stinfo>& Vname) {
     return false;
 }
 void UpdateClientScreen() {
+    if (!CheckPermission(enPermaission::enUpdateClientPermassion)) {
+        MessagePermission();
+        GoToMainMenue();
+
+
+    }
     vector<stinfo>Vword = loadfromfile(FileClient);
     cout << "==========================================================\n";
     cout << space(1) << "Update Client Screen\n";
@@ -948,6 +964,12 @@ void UpdateClientScreen() {
 
 }
 void DeleteClientScreen() {
+    if (!CheckPermission(enPermaission::enDeleteClientPermassion)) {
+        MessagePermission();
+        GoToMainMenue();
+
+
+    }
     vector<stinfo>Vword = loadfromfile(FileClient);
     cout << "==========================================================\n";
     cout << space(1) << "Delete Client Screen\n";
@@ -958,6 +980,14 @@ void DeleteClientScreen() {
 
 }
 void AddClientAndCheck() {
+    if (!CheckPermission(enPermaission::enAddClientPermission)) {
+        MessagePermission();
+        GoToMainMenue();
+
+
+    }
+
+
 
     cout << "==========================================================\n";
     cout << space(1) << "Add New Client Screen\n";
@@ -1017,6 +1047,12 @@ void FindUserInFile() {
 
 }
 void Select() {
+    if (!CheckPermission(enPermaission::enUpdateClientPermassion)) {
+        MessagePermission();
+        GoToMainMenue();
+
+
+    }
     vector<stinfo>Vword = loadfromfile(FileClient);
     cout << "==========================================================\n";
     cout << space(1) << "Find Client Screen\n";
@@ -1304,14 +1340,12 @@ void PerfromTransaction(enTransactionOptions choose) {
 }
 
 bool CheckPermission(enPermaission check) {
-    if (CurrentUser.Permission == enPermaission::enAllPermission) {
-        return true;
-
-    }
-    return (CurrentUser.Permission & check);
+    return ((CurrentUser.Permission == enPermaission::enAllPermission) || (CurrentUser.Permission & check) == check);
+   
+  
 }
 void MessagePermission() {
-    cout << "-------------------------------------------------------------------------------\n";
+    cout << "---------------------------(-:  Sorry  :-)----------------------------------------------------\n";
     cout << "Access Denied,\n You dont Have Permission To Do this,\n Please Conact Your Admin.\n";
     cout << "-------------------------------------------------------------------------------\n";
 
@@ -1327,39 +1361,39 @@ void PerfromMainMenueOption(enMainMenueOptions enchoose) {
 
         system("cls");
        
-       CheckPermission(enPermaission::enShowClientPermission)?printAllVectors():MessagePermission();
+        printAllClients();
         
         GoToMainMenue();
         break;
     case enMainMenueOptions::AddClient:
         system("cls");
-        CheckPermission(enPermaission::enAddClientPermission)? AddClientAndCheck():MessagePermission();
+        AddClientAndCheck();
         GoToMainMenue();
         break;
     case enMainMenueOptions::Delete:
         system("cls");
-       CheckPermission(enPermaission::enDeleteClientPermassion)? DeleteClientScreen():MessagePermission();
+        DeleteClientScreen();
         GoToMainMenue();
         break;
     case enMainMenueOptions::Update:
         system("cls");
-      CheckPermission(enPermaission::enUpdateClientPermassion)?UpdateClientScreen():MessagePermission();
+      UpdateClientScreen();
 
         GoToMainMenue();
         break;
     case enMainMenueOptions::find:
         system("cls");
-        CheckPermission(enPermaission::enFindClientPermassion)?Select():MessagePermission();
+      Select();
         GoToMainMenue();
         break;
     case enMainMenueOptions::Transaction:
         system("cls");
-       CheckPermission(enPermaission::enTransactionpermission)?ShowTransAction():MessagePermission();
+      ShowTransAction();
        GoToMainMenue();
         break;
     case enMainMenueOptions::ManageUsers:
         system("cls");
-      CheckPermission(enPermaission::enManageUsers)?ShowManageUsersScreen():MessagePermission();
+       ShowManageUsersScreen();
       GoToMainMenue();
         break;
     case enMainMenueOptions::logout:
@@ -1385,7 +1419,12 @@ short ReadNumberFromMenue(string Message) {
 
 
 void ShowTransAction() {
+    if (!CheckPermission(enPermaission::enTransactionpermission)) {
+        MessagePermission();
+        GoToMainMenue();
 
+
+    }
     system("cls");
     cout << "================================================================================================\n";
     cout << space(4) << "Transaction Menue Screen\n";
@@ -1422,7 +1461,12 @@ void ShowMainMenue() {
 
 }
 void ShowManageUsersScreen() {
+    if (!CheckPermission(enPermaission::enManageUsers)) {
+        MessagePermission();
+        GoToMainMenue();
 
+
+    }
     system("cls");
     cout << "================================================================================================\n";
     cout << space(4) << "Manage Users Main Menue \n";
@@ -1479,6 +1523,14 @@ void loginUser() {
 
    
 }
+void HintForStudentInGitHub() {
+    cout << " \n\n\n**Hint:** For anyone who wants to access this project:\n";
+    cout << "Username:Admin\n";
+    cout << "Password:1234\n";
+    cout << "This user has full permissions\n\n\n\n\n";
+
+
+}
 void login() {
 
   
@@ -1486,7 +1538,9 @@ void login() {
         system("cls");
         cout << "================================================================================================\n";
         cout << space(4) << " login Screen \n";
+        
         cout << "================================================================================================\n";
+        HintForStudentInGitHub();
         loginUser();
     ShowMainMenue();
 

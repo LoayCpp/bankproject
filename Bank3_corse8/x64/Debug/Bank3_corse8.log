@@ -1,0 +1,5 @@
+﻿  Bank3_corse8.cpp
+C:\Users\loaya\Desktop\pradvice\corse8\bankproject\Bank3_corse8.cpp(204,28): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\loaya\Desktop\pradvice\corse8\bankproject\Bank3_corse8.cpp(1126,31): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\loaya\Desktop\pradvice\corse8\bankproject\Bank3_corse8.cpp(1154,35): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Bank3_corse8.vcxproj -> C:\Users\loaya\Desktop\pradvice\corse8\bankproject\x64\Debug\Bank3_corse8.exe
