@@ -9,8 +9,8 @@ A C++ banking management system implementing role-based permissions, a login sys
 - [Key Features](#key-features)
 - [What I Learned](#what-i-learned)
 - [Technologies Used](#technologies-used)
-- [Purpose](#purpose)
-
+- [Purpose](#purpose)  
+- [Screenshots](#screenshots)
 ---
 
 ## Project Description
@@ -58,8 +58,48 @@ This project was created for learning and practice. It is intended to:
 - Provide a hands-on exercise in organizing a C++ project with clear responsibilities.
 - Serve as a starting point for extending to more advanced storage (e.g., databases) or a GUI in the future.
 
-*Note: This implementation is for educational purposes and not intended as a production-grade banking system.*
+*Note: This implementation is for educational purposes and not intended as a production-grade banking system.*  
+---
+## Screenshots
+### Login Screen:   
+This image shows the login screen, where hints are provided for each user to enter the username and password displayed on the screen.  
+
+<img width="1483" height="762" alt="login" src="https://github.com/user-attachments/assets/268dff01-be0f-4bb1-91a4-2c0281eef897" />
+
+--- 
+### Main Screen:      
+This screen displays all clients and allows adding, deleting, or searching for clients easily.
+
+<img width="1483" height="762" alt="menue" src="https://github.com/user-attachments/assets/1b5de676-0e33-4fd3-95a7-a5efe35112cb" />   
+
+ ---
+ ### Operations Screen:   
+This screen allows the user to perform financial operations such as adding balance, withdrawing balance, and checking the total.
+
+<img width="1483" height="762" alt="transaction" src="https://github.com/user-attachments/assets/77cae0d6-cd18-4956-9da9-9fa8729dfcce" />
+
+---   
+### User Management Screen:   
+This screen is used to manage system user access, allowing the addition of new users, deletion, editing of their information, or searching for any user.
+
+<img width="1483" height="762" alt="manage" src="https://github.com/user-attachments/assets/bf175d01-1dd5-401e-8f76-2f5c6b5b89cb" />
+
+---
+### Permissions Screen:   
+If the user has permission to access the system, they are allowed in; if not, this screen appears to inform them that access is denied.
+
+<img width="1483" height="762" alt="premission" src="https://github.com/user-attachments/assets/02c2b3a7-218f-4d1f-a963-e71e1d951a9d" />
 
 ---
 
-Developed by **Loay Anwar**
+
+
+<p align="left">
+
+  <strong> Developed by  Loay Anwar</strong> <br>
+   <a href="https://github.com/LoayCpp">
+    <img width="50" height="50" alt="Loay-modified" src="https://github.com/user-attachments/assets/8fee5f57-fc06-4723-a7ad-2d077ab1d7e2" />
+</a>
+</p>
+
+
