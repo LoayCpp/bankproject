@@ -1483,68 +1483,64 @@ void ShowManageUsersScreen() {
     PerfromMangeUsersOption(enManageUsersOption(ReadNumberFromMenue("Choose What Do You Want To Do ?[1 - 6] ? \t")));
 
 }
-void loginUser() {
 
 
+bool CheckIsNameAndPasswordInFile(string name, string password, stUsers& user) {
     vector<stUsers>Vuser = LoadFomeUsersFile(UsersFlie);
+
+    for (stUsers& s : Vuser) {
+        if ((name == s.Name && password == s.Password)) {
+            user = s;
+            return true;
+        }
+
+
+
+    }
+    return false;
+}
+bool LoadUserInfo(string name, string password) {
+
+    return CheckIsNameAndPasswordInFile(name, password, CurrentUser);
+
+}
+void login() {
+
     string Name, Password;
-   
-    bool found = true;
+    bool Notfound = false;
     do {
 
-        if (!found) {
-
-
-
+        system("cls");
+        cout << "================================================================================================\n";
+        cout << space(4) << " login Screen \n";
+        cout << "================================================================================================\n";
+        if (Notfound) {
             cout << "invlaid Username / Password\n";
-
-
         }
+
 
         cout << "Enter Username?";
         getline(cin >> ws, Name);
         cout << "Enter Password?";
         getline(cin >> ws, Password);
-        found = false;
-        for (stUsers& s : Vuser) {
-            if ((Name == s.Name && Password == s.Password)) {
-                CurrentUser = s;
-                found = true;
-                break;
-            }
+        Notfound = !LoadUserInfo(Name, Password);
 
-
-        }
+    } while (Notfound);
 
 
 
+    ShowMainMenue();
 
-    } while (!found);
-
-   
 }
-void HintForStudentInGitHub() {
+
+/*void HintForStudentInGitHub() {
     cout << " \n\n\n**Hint:** For anyone who wants to access this project:\n";
     cout << "Username:Admin\n";
     cout << "Password:1234\n";
     cout << "This user has full permissions\n\n\n\n\n";
 
 
-}
-void login() {
-
-  
-  
-        system("cls");
-        cout << "================================================================================================\n";
-        cout << space(4) << " login Screen \n";
-        
-        cout << "================================================================================================\n";
-        HintForStudentInGitHub();
-        loginUser();
-    ShowMainMenue();
-
-}
+}*/
 
 int main()
 {
