@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-#include"clsperson.h"
+#include<clsperson.h>
 #include<fstream>
 #include<string>
 #include"clsString.h"
@@ -9,6 +9,9 @@ using namespace std;
 class clsBankClient :public clsPerson
 {
 private:
+
+
+
 	enum enMode{EmptyMode=0,UpdateMode=1,AddModeClient=2};
 	string _AccountNumber;
 	string _PinCode;
@@ -26,7 +29,6 @@ private:
 		return clsBankClient(enMode::EmptyMode, " ", " ", " ", " ", " ", " ",0);
 
 	}
-
 	string _ConvertObjectToLine(clsBankClient Client,string Delim = "#//#") {
 
 		string Word = "";
@@ -61,7 +63,6 @@ private:
 
 		return Vclients;
 	}
-
 	void _AddClient() {
 
 
@@ -114,7 +115,6 @@ private:
 
 
 	}
-
 	void _Update() {
 		vector<clsBankClient> Vclinets = _UploadClinetFromFile();
 		for (clsBankClient& C : Vclinets) {
@@ -131,6 +131,10 @@ private:
 		_SaveClinetToFile(Vclinets);
 
 	}
+
+
+
+
 public:
 	clsBankClient(enMode Mode,string FirstName, string LastName, string Email, string Phone, string AccountNumber, string PinCode,double  Balance)
 		:clsPerson(FirstName, LastName, Email, Phone) {
@@ -147,39 +151,20 @@ public:
 
 		return _AccountNumber;
 	}
+	__declspec(property(get = GetAccountNumber))string AccountNumber;
 
 	void SetPinCode(string PinCode) {
 		_PinCode = PinCode;
 	}
 	string  GetPinCode() { return _PinCode; }
-
 	__declspec(property(get = GetPinCode, put = SetPinCode))string PinCode;
-
 
 	void SetBalance(double Balance) {
 		_Balance = Balance;
 	}
-
 	double GetBalance() { return _Balance; }
 	__declspec(property(get = GetBalance, put = SetBalance))double Balance;
 
-
-	void Print() {
-
-		cout << "\n-----Info Client----------\n";
-		cout << "FirstName        :"<< FirstName << endl;
-		cout << "LastName         :" << LastName << endl;
-		cout << "FullName         :" << FullName << endl;
-		cout << "Email            :" << Email << endl;
-		cout << "Phone            :" << Phone << endl;
-		cout << "AccountNumber    :" << _AccountNumber << endl;
-		cout << "PinCode          :" << _PinCode << endl;
-		cout << "Balance          :" << _Balance << endl;
-		cout << "----------------------------------------\n";
-
-
-
-	}
 	static clsBankClient GetAddClientModeAndAccount(string Account) {
 
 
