@@ -299,5 +299,24 @@ public:
 		return Balance;
 
 	}
+	 void Deposit(double Amount) {
+
+		_Balance += Amount;
+		Save();
+
+	}
+	 bool Withdraw(double amount) {
+
+		 if (amount > Balance) {
+
+			 return false;
+		 }
+		 else {
+			 Balance -= amount;
+			 Save();
+
+		 }
+		 return true;
+	 }
 };
 

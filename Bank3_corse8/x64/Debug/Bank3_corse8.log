@@ -17,10 +17,10 @@ C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsString.h(328,30): warni
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsString.h(376,22): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank3_corse8.cpp')
   
-C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsInputValidate.h(101,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsInputValidate.h(125,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank3_corse8.cpp')
   
-C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsInputValidate.h(105,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsInputValidate.h(129,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank3_corse8.cpp')
   
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUtil.h(24,20): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data

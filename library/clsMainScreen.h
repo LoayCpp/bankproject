@@ -9,8 +9,10 @@
 #include"clsDeleteClientScreen.h"
 #include"clsUpdateClientScreen.h"
 #include"clsFindClientScreen.h"
+#include"clsTransactionScreen.h"
+#include"clsManageUsers.h"
 using namespace std;
-class clsMainScreen :protected clsScreen
+class clsMainScreen:protected clsScreen
 {
 private:
 	enum enMainMenueOptions {
@@ -21,12 +23,12 @@ private:
 
 	static short _ReadMainManueOption() {
 
-
-		cout << clsUtil::Tabs(4) << "Choose what do you want to do? [1 to 8]? :";
-		short num = clsInputValidate::ReadIntNumberBetween(1, 8, "Enter The Number Between 1-8:");
+		
+		cout <<clsUtil::Tabs(4) <<"Choose what do you want to do? [1 to 8]? :";
+		short num=clsInputValidate::ReadIntNumberBetween(1,8,"Enter The Number Between 1-8:");
 		return num;
 	}
-
+	
 	static void _GoToMainMenueScreen() {
 
 
@@ -49,22 +51,22 @@ private:
 
 		clsDeleteClientScreen::ShowDeleteClientScreen();
 	}
-	static void _ShowUpdateClientScreen() {
-		clsUpdateClientScreen::ShowUpdateClientScreen();
-	}
+		static void _ShowUpdateClientScreen() {
+			clsUpdateClientScreen::ShowUpdateClientScreen();
+		}
 	static void _ShowFindClientScreen() {
 		clsFindClientScreen::ShowFindClientScreen();
 	}
 	static void _ShowTransactionClientScreen() {
 
-		cout << "Transaction Clinet Screen Will Be here\n";
+		clsTransactionScreen::ShowTransactionScreen();
+	
 
-
-	}
+		}
 	static void _ShowManageClientScreen() {
 
-		cout << "Manage Clinet Screen Will Be here\n";
-
+		
+		clsManageUsers::ShowManageUsersMenue();
 
 	}
 	static void _ShowEndScreen() {
@@ -115,7 +117,7 @@ private:
 			_ShowEndScreen();
 			_GoToMainMenueScreen();
 			break;
-
+		
 		}
 
 
@@ -131,7 +133,7 @@ public:
 		_DrawScreenHeader("\t\tMain Screen");
 
 		cout << clsUtil::Tabs(4) << "==============================================================\n";
-		cout << setw(60) << left << " " << "Main Menue\n";
+		cout << setw(60)<<left<<" " << "Main Menue\n";
 		cout << clsUtil::Tabs(4) << "==============================================================\n\n";
 		cout << setw(37) << " " << "[1] Show Client List\n";
 		cout << setw(37) << " " << "[2] Add New Client\n";
