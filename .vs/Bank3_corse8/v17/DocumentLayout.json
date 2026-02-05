@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F62714A2-6C99-4C8D-BF48-9E01AB674ADD}|Bank3_corse8.vcxproj|C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\Bank3_corse8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F62714A2-6C99-4C8D-BF48-9E01AB674ADD}|Bank3_corse8.vcxproj|solutionrelative:Bank3_corse8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F62714A2-6C99-4C8D-BF48-9E01AB674ADD}|Bank3_corse8.vcxproj|C:\\USERS\\LOAYA\\DESKTOP\\GITHUBLOAY\\BANKPROJECT\\LIBRARY\\CLSMAINSCREEN.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F62714A2-6C99-4C8D-BF48-9E01AB674ADD}|Bank3_corse8.vcxproj|solutionrelative:LIBRARY\\CLSMAINSCREEN.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F62714A2-6C99-4C8D-BF48-9E01AB674ADD}|Bank3_corse8.vcxproj|C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\Bank3_corse8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F62714A2-6C99-4C8D-BF48-9E01AB674ADD}|Bank3_corse8.vcxproj|solutionrelative:Bank3_corse8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,26 +26,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "clsMainScreen.h",
               "DocumentMoniker": "C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\library\\clsMainScreen.h",
               "RelativeDocumentMoniker": "library\\clsMainScreen.h",
               "ToolTip": "C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\library\\clsMainScreen.h",
               "RelativeToolTip": "library\\clsMainScreen.h",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-02-02T18:15:56.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Bank3_corse8.cpp",
               "DocumentMoniker": "C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\Bank3_corse8.cpp",
               "RelativeDocumentMoniker": "Bank3_corse8.cpp",
               "ToolTip": "C:\\Users\\loaya\\Desktop\\GitHubLoay\\bankproject\\Bank3_corse8.cpp",
               "RelativeToolTip": "Bank3_corse8.cpp",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-04T18:11:57.676Z",
               "EditorCaption": ""
