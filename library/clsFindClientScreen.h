@@ -25,11 +25,21 @@ class clsFindClientScreen : protected clsScreen
 
 public:
 	static void ShowFindClientScreen() {
+		if (!_CheckPermissionsOfUser(clsUser::pFindClient)) {
+
+
+			return;
+		}
 		_DrawScreenHeader("\t\tFine Client Screen");
 		string AccountNumber = "";
 		cout << "Enter The Account Number for Find Clinet: ";
 		AccountNumber = clsInputValidate::ReadString();
+		while (!clsBankClient::IsExitsClient(AccountNumber)) {
 
+			cout << "Enter The Another Account Number for Find Clinet: ";
+			AccountNumber = clsInputValidate::ReadString();
+
+		}
 		clsBankClient Client = clsBankClient::Find(AccountNumber);
 
 		if (!Client.IsEmpty()) {

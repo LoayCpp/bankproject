@@ -17,12 +17,13 @@ private:
     string _UserName;
     string _Password;
     int _Permissions;
-
     bool _MarkedForDelete = false;
+    struct  stLoginRegister;
+    
      string _ConvertUsersLoginToString(string Delim="#//#") {
         
         string Line = "";
-        Line += clsDate::DataToStringWithSeconds(clsDate::GetSystemDate()) + Delim;
+        Line += clsDate::DataToStringWithSeconds() + Delim;
         Line += UserName + Delim;
         Line += Password + Delim;
         Line += to_string(Permissions);
@@ -159,13 +160,70 @@ private:
     {
         return clsUser(enMode::EmptyMode, "", "", "", "", "", "", 0);
     }
+   static vector<string> _vLoadUserRegisterFromFile() {
 
+        vector<string>vRegisterUsers;
+        fstream myfile;
+        myfile.open("LoginRegister.txt", ios::in);
+        if (myfile.is_open()) {
+            string line;
+            while (getline(myfile, line)) {
+
+                vRegisterUsers.push_back(line);
+
+
+
+            }
+
+
+
+            myfile.close();
+        }
+
+
+        return vRegisterUsers;
+
+    }
+   static stLoginRegister _ConvertRegisterToUserObject(string S, string Delim = "#//#") {
+       stLoginRegister Register;
+      vector< string> vRegister = clsString::Split(S, Delim);
+
+      Register.Date = vRegister[0];
+      Register.Username = vRegister[1];
+      Register.Password = vRegister[2];
+      Register.Permissions = stoi(vRegister[3]);
+      return Register;
+   }
+
+  static  vector<stLoginRegister>_vUserRegister(){
+        vector<string>vUserRegisterString=_vLoadUserRegisterFromFile();
+        vector<stLoginRegister>vUser;
+
+        for (string &S:vUserRegisterString)
+        {
+
+            stLoginRegister UserReg = _ConvertRegisterToUserObject(S);
+            vUser.push_back(UserReg);
+        }
+
+
+        return vUser;
+    }
 public:
+    struct stLoginRegister {
+        string Username;
+        string Password;
+        string Date;
+        int Permissions;
+
+
+    };
 
     enum enPermissions {
         eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
-        pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
+        pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64,pRegister=128
     };
+  
     clsUser(enMode Mode, string FirstName, string LastName,
         string Email, string Phone, string UserName, string Password,
         int Permissions) :
@@ -216,6 +274,7 @@ public:
     }
     __declspec(property(get = GetPassword, put = SetPassword)) string Password;
 
+   
     void SetPermissions(int Permissions)
     {
         _Permissions = Permissions;
@@ -391,5 +450,10 @@ public:
 
 
     }
+     static vector<stLoginRegister>GetUserRegister() {
+
+
+         return _vUserRegister();
+     }
 };
 

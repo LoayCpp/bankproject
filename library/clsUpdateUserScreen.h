@@ -76,7 +76,12 @@ private:
         {
             Permissions += clsUser::enPermissions::pManageUsers;
         }
-
+        cout << "\Register Show Users? y/n? ";
+        cin >> Answer;
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            Permissions += clsUser::enPermissions::pRegister;
+        }
         return Permissions;
 
     }

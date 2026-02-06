@@ -18,9 +18,7 @@ private:
 	short _Day = 1;
 	short _Month = 1;
 	short _Year = 1900;
-	short _hours = 0;
-	short _minutes = 0;
-	short _seconds = 0;
+	
 public:
 
 	clsDate()
@@ -45,17 +43,7 @@ public:
 
 	}
 
-	clsDate(short seconds,short minute,short hours,short Day, short Month, short Year)
-	{
 
-		_Year = Year;
-		_Month = Month;
-		_Day = Day;
-		_hours = hours;
-		_minutes = minute;
-		_seconds=seconds;
-
-	}
 	clsDate( short Day, short Month, short Year)
 	{
 
@@ -102,34 +90,6 @@ public:
 	}
 	__declspec(property(get = GetYear, put = SetYear)) short Year;
 
-	void SetHours(short hours) {
-		_hours = hours;
-	}
-
-	short GetHours() {
-		return _hours;
-	}
-	__declspec(property(get = GetHours, put = SetHours)) short hours;
-
-	void SetMinutes(short Minutes) {
-		_minutes = Minutes;
-	}
-
-	short GetMinutes() {
-		return _minutes;
-	}
-	__declspec(property(get = GetMinutes, put = SetMinutes)) short minutes;
-
-	void SetSeconds(short Seconds) {
-		_seconds = Seconds;
-	}
-
-	short GetSeconds() {
-		return _seconds;
-	}
-	__declspec(property(get = GetSeconds, put = SetSeconds)) short seconds;
-
-
 
 
 	void Print()
@@ -143,15 +103,13 @@ public:
 		time_t t = time(0);
 		tm* now = localtime(&t);
 
-		short seconds,minutes,hours,Day, Month, Year;
+		short Day, Month, Year;
 
 		Year = now->tm_year + 1900;
 		Month = now->tm_mon + 1;
 		Day = now->tm_mday;
-		hours = now->tm_hour;
-		minutes = now->tm_min;
-		seconds = now->tm_sec;
-		return clsDate(seconds,minutes,hours,Day, Month, Year);
+	
+		return clsDate(Day, Month, Year);
 	}
 
 	static	bool IsValidDate(clsDate Date)
@@ -196,10 +154,21 @@ public:
 		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
 		
 	}
-	static string DataToStringWithSeconds(clsDate Date) {
+	static string DataToStringWithSeconds() {
 
-		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year) + " - " + to_string(Date.hours) + ":" + to_string(Date.minutes)
-			+ ":" + to_string(Date.seconds);
+		time_t t = time(0);
+		tm* now = localtime(&t);
+		short hours, minutes, seconds, Day, Month, Year;
+
+		Year = now->tm_year + 1900;
+		Month = now->tm_mon + 1;
+		Day = now->tm_mday;
+		hours = now->tm_hour;
+		minutes = now->tm_min;
+		seconds = now->tm_sec;
+
+		return  to_string(Day) + "/" + to_string(Month) + "/" + to_string(Year) + " - " + to_string(hours) + ":" + to_string(minutes)
+			+ ":" + to_string(seconds);
 
 	}
 

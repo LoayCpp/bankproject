@@ -1,9 +1,8 @@
 #pragma once
 #include <iostream>
-#include"clsUtil.h"
-#include"clsInputValidate.h"
+
 #include"clsScreen.h"
-#include"iomanip"
+#include"Global.h"
 #include"clsClientListScreen.h"
 #include"clsAddNewClientScreen.h"
 #include"clsDeleteClientScreen.h"
@@ -11,6 +10,7 @@
 #include"clsFindClientScreen.h"
 #include"clsTransactionScreen.h"
 #include"clsManageUsers.h"
+#include"clsRegisterUsersScreen.h"
 using namespace std;
 class clsMainScreen:protected clsScreen
 {
@@ -18,14 +18,14 @@ private:
 	enum enMainMenueOptions {
 		eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
 		eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
-		eManageUsers = 7, eExit = 8
+		eManageUsers = 7,eRegister=8 ,eExit = 9
 	};
 
 	static short _ReadMainManueOption() {
 
 		
-		cout <<clsUtil::Tabs(4) <<"Choose what do you want to do? [1 to 8]? :";
-		short num=clsInputValidate::ReadIntNumberBetween(1,8,"Enter The Number Between 1-8:");
+		cout <<clsUtil::Tabs(4) <<"Choose what do you want to do? [1 to 9]? :";
+		short num=clsInputValidate::ReadIntNumberBetween(1,9,"Enter The Number Between 1-8:");
 		return num;
 	}
 	
@@ -69,9 +69,14 @@ private:
 		clsManageUsers::ShowManageUsersMenue();
 
 	}
-	static void _ShowEndScreen() {
-		cout << "End Screen  Will Be here\n";
+	static void _ShowRegisterUsersScreen() {
 
+		clsRegisterUsersScreen::ShowRegisterUsersScreen();
+		
+	}
+	static void _Logout() {
+	
+		CurrentUser = clsUser::Find("", "");
 	}
 	static void _PerfromMainMenueOption(enMainMenueOptions Option) {
 
@@ -112,10 +117,14 @@ private:
 			_ShowManageClientScreen();
 			_GoToMainMenueScreen();
 			break;
+		case clsMainScreen::eRegister:
+			system("cls");
+			_ShowRegisterUsersScreen();
+			_GoToMainMenueScreen();
+			break;
 		case clsMainScreen::eExit:
 			system("cls");
-			_ShowEndScreen();
-			_GoToMainMenueScreen();
+			_Logout();
 			break;
 		
 		}
@@ -142,7 +151,8 @@ public:
 		cout << setw(37) << " " << "[5] Find Client\n";
 		cout << setw(37) << " " << "[6] Transactions\n";
 		cout << setw(37) << " " << "[7] Manage Users\n";
-		cout << setw(37) << " " << "[8] Logout\n\n";
+		cout << setw(37) << " " << "[8] Login Register\n";
+		cout << setw(37) << " " << "[9] Logout\n\n";
 		cout << clsUtil::Tabs(4) << "==============================================================\n";
 		_PerfromMainMenueOption(enMainMenueOptions(_ReadMainManueOption()));
 
