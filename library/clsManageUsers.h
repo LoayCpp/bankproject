@@ -3,11 +3,6 @@
 #include<iostream>
 #include<iomanip>
 #include"clsInputValidate.h"
-#include"clsListUsersScreen.h"
-#include"clsAddNewUserScreen.h"
-#include"clsDeleteUserScreen.h"
-#include"clsUpdateUserScreen.h"	
-#include"clsFindUserScreen.h"
 class clsManageUsers:protected clsScreen
 {
 
@@ -29,26 +24,27 @@ private:
 	}
 	static void _ShowListUsersScreen() {
 
-		clsListUsersScreen::ShowUsersList();
+		cout << "List Users\n";
 
 	}
 	static void _ShowAddUsersScreen() {
 
-		clsAddNewUserScreen::ShowAddUserScreen();
+		cout << "Add Users\n";
+
 	}
 	static void _ShowDeleteUsersScreen() {
 
-		clsDeleteUserScreen::ShowDeleteUserScreen();
+		cout << "Delete Users\n";
 
 	}
 	static void _ShowUpdateUsersScreen() {
 
-		clsUpdateUserScreen::ShowUpdateUserScreen();
+		cout << "Update Users\n";
 
 	}
 	static void _ShowFindUsersScreen() {
 
-		clsFindUserScreen::ShowFindUserScreen();
+		cout << "Find Users\n";
 
 	}
 	static void _PerformManageUsersMenueOption(enManageUsersMenueOption Option) {
@@ -95,11 +91,6 @@ private:
 	}
 public:
 	static void ShowManageUsersMenue() {
-		if (!_CheckPermissionsOfUser(clsUser::pManageUsers)) {
-
-
-			return;
-		}
 		system("cls");
 		_DrawScreenHeader("\t\t Manage User Screen ");
 		cout << setw(37) << left << "" << "===========================================================================\n";

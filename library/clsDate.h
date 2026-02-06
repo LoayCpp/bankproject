@@ -18,7 +18,9 @@ private:
 	short _Day = 1;
 	short _Month = 1;
 	short _Year = 1900;
-
+	short _hours = 0;
+	short _minutes = 0;
+	short _seconds = 0;
 public:
 
 	clsDate()
@@ -28,6 +30,7 @@ public:
 		_Day = now->tm_mday;
 		_Month = now->tm_mon + 1;
 		_Year = now->tm_year + 1900;
+
 	}
 
 	clsDate(string sDate)
@@ -42,15 +45,26 @@ public:
 
 	}
 
-	clsDate(short Day, short Month, short Year)
+	clsDate(short seconds,short minute,short hours,short Day, short Month, short Year)
 	{
 
-		_Day = Day;
-		_Month = Month;
 		_Year = Year;
+		_Month = Month;
+		_Day = Day;
+		_hours = hours;
+		_minutes = minute;
+		_seconds=seconds;
 
 	}
+	clsDate( short Day, short Month, short Year)
+	{
 
+		_Year = Year;
+		_Month = Month;
+		_Day = Day;
+		
+
+	}
 	clsDate(short DateOrderInYear, short Year)
 	{
 		//This will construct a date by date order in year
@@ -88,6 +102,36 @@ public:
 	}
 	__declspec(property(get = GetYear, put = SetYear)) short Year;
 
+	void SetHours(short hours) {
+		_hours = hours;
+	}
+
+	short GetHours() {
+		return _hours;
+	}
+	__declspec(property(get = GetHours, put = SetHours)) short hours;
+
+	void SetMinutes(short Minutes) {
+		_minutes = Minutes;
+	}
+
+	short GetMinutes() {
+		return _minutes;
+	}
+	__declspec(property(get = GetMinutes, put = SetMinutes)) short minutes;
+
+	void SetSeconds(short Seconds) {
+		_seconds = Seconds;
+	}
+
+	short GetSeconds() {
+		return _seconds;
+	}
+	__declspec(property(get = GetSeconds, put = SetSeconds)) short seconds;
+
+
+
+
 	void Print()
 	{
 		cout << DateToString() << endl;
@@ -99,13 +143,15 @@ public:
 		time_t t = time(0);
 		tm* now = localtime(&t);
 
-		short Day, Month, Year;
+		short seconds,minutes,hours,Day, Month, Year;
 
 		Year = now->tm_year + 1900;
 		Month = now->tm_mon + 1;
 		Day = now->tm_mday;
-
-		return clsDate(Day, Month, Year);
+		hours = now->tm_hour;
+		minutes = now->tm_min;
+		seconds = now->tm_sec;
+		return clsDate(seconds,minutes,hours,Day, Month, Year);
 	}
 
 	static	bool IsValidDate(clsDate Date)
@@ -148,6 +194,13 @@ public:
 	static string DateToString(clsDate Date)
 	{
 		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+		
+	}
+	static string DataToStringWithSeconds(clsDate Date) {
+
+		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year) + " - " + to_string(Date.hours) + ":" + to_string(Date.minutes)
+			+ ":" + to_string(Date.seconds);
+
 	}
 
 	string DateToString()

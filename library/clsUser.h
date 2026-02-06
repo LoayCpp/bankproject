@@ -5,7 +5,7 @@
 #include "clsString.h"
 #include <vector>
 #include <fstream>
-
+#include"clsDate.h"
 using namespace std;
 class clsUser : public clsPerson
 {
@@ -19,7 +19,17 @@ private:
     int _Permissions;
 
     bool _MarkedForDelete = false;
+     string _ConvertUsersLoginToString(string Delim="#//#") {
+        
+        string Line = "";
+        Line += clsDate::DataToStringWithSeconds(clsDate::GetSystemDate()) + Delim;
+        Line += UserName + Delim;
+        Line += Password + Delim;
+        Line += to_string(Permissions);
+        return Line;
 
+    }
+  
     static clsUser _ConvertLinetoUserObject(string Line, string Seperator = "#//#")
     {
         vector<string> vUserData;
@@ -363,6 +373,23 @@ public:
             return false;
 
     }
+     void RegisterLogin() {
+        fstream myfile;
+        myfile.open("LoginRegister.txt", ios::app);
+        if (myfile.is_open()) {
 
+            string Line;
+            Line = _ConvertUsersLoginToString();
+
+
+            myfile << Line << endl;
+
+
+        }
+        myfile.close();
+
+
+
+    }
 };
 

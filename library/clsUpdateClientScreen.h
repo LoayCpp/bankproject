@@ -48,11 +48,7 @@ class clsUpdateClientScreen:protected clsScreen
 public:
 
 	static void ShowUpdateClientScreen() {
-		if (!_CheckPermissionsOfUser(clsUser::pUpdateClients)) {
 
-
-			return;
-		}
 
 		_DrawScreenHeader("\t\t Update Client Screen");
 	    string Account = "";
