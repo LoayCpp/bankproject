@@ -3,6 +3,7 @@
 #include"clsScreen.h"
 #include"clsInputValidate.h"
 #include"clsBankClient.h"
+#include"clsUser.h"
 using namespace std;
 class clsAddNewClientScreen:protected clsScreen
 {
@@ -53,6 +54,11 @@ public:
 
    static void ShowAddNewClientScreen() {
 
+     if(!_CheckPermissionsOfUser(clsUser::pAddNewClient) ){
+
+
+           return;
+       }
        _DrawScreenHeader("\t\tAdd Client Screen");
         string AccountNumber = "";
         cout << "Enter The Number Client To Add in File :";

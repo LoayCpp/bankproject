@@ -25,7 +25,11 @@ private:
 
 public:
     static void ShowDeleteClientScreen() {
+        if (!_CheckPermissionsOfUser(clsUser::pDeleteClient)) {
 
+
+            return;
+        }
         _DrawScreenHeader("\t\t Delete Clinet Screen");
 
 

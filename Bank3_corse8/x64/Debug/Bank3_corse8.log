@@ -17,14 +17,15 @@ C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsString.h(328,30): warni
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsString.h(376,22): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank3_corse8.cpp')
   
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUtil.h(24,20): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank3_corse8.cpp')
+  
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsInputValidate.h(125,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank3_corse8.cpp')
   
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsInputValidate.h(129,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Bank3_corse8.cpp')
   
-C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUtil.h(24,20): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
-  (compiling source file 'Bank3_corse8.cpp')
-  
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsBankClient.h(283,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUser.h(313,1): warning C4715: 'clsUser::Save': not all control paths return a value
   Bank3_corse8.vcxproj -> C:\Users\loaya\Desktop\GitHubLoay\bankproject\x64\Debug\Bank3_corse8.exe

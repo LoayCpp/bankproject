@@ -4,6 +4,10 @@
 #include<iomanip>
 #include"clsInputValidate.h"
 #include"clsListUsersScreen.h"
+#include"clsAddNewUserScreen.h"
+#include"clsDeleteUserScreen.h"
+#include"clsUpdateUserScreen.h"	
+#include"clsFindUserScreen.h"
 class clsManageUsers:protected clsScreen
 {
 
@@ -30,22 +34,21 @@ private:
 	}
 	static void _ShowAddUsersScreen() {
 
-		cout << "Add Users\n";
-
+		clsAddNewUserScreen::ShowAddUserScreen();
 	}
 	static void _ShowDeleteUsersScreen() {
 
-		cout << "Delete Users\n";
+		clsDeleteUserScreen::ShowDeleteUserScreen();
 
 	}
 	static void _ShowUpdateUsersScreen() {
 
-		cout << "Update Users\n";
+		clsUpdateUserScreen::ShowUpdateUserScreen();
 
 	}
 	static void _ShowFindUsersScreen() {
 
-		cout << "Find Users\n";
+		clsFindUserScreen::ShowFindUserScreen();
 
 	}
 	static void _PerformManageUsersMenueOption(enManageUsersMenueOption Option) {
@@ -92,6 +95,11 @@ private:
 	}
 public:
 	static void ShowManageUsersMenue() {
+		if (!_CheckPermissionsOfUser(clsUser::pManageUsers)) {
+
+
+			return;
+		}
 		system("cls");
 		_DrawScreenHeader("\t\t Manage User Screen ");
 		cout << setw(37) << left << "" << "===========================================================================\n";

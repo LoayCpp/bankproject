@@ -5,6 +5,7 @@
 #include<iomanip>
 #include"clsUtil.h"
 #include<string>
+#include"clsUser.h"
 using namespace std;
 
 class clsClientListScreen :protected clsScreen
@@ -24,6 +25,11 @@ private:
 
 public:
  static   void PrintListClient() {
+
+     if (!clsScreen::_CheckPermissionsOfUser(clsUser::pListClients)) {
+
+         return;
+     }
         vector<clsBankClient>vClient = clsBankClient::GetListClient();
 
         cout << ("\t\t-----------------------------------------------------------------------\n");

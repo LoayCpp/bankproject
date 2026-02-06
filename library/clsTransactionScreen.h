@@ -73,6 +73,12 @@ private:
 
 public:
 	static void ShowTransactionScreen() {
+
+		if (!_CheckPermissionsOfUser(clsUser::pTranactions)) {
+
+
+			return;
+		}
 		system("cls");
 		_DrawScreenHeader("\t\tTransaction Screen ");
 
