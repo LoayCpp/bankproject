@@ -151,8 +151,7 @@ public:
 		cout << setw(37) << " " << "[5] Find Client\n";
 		cout << setw(37) << " " << "[6] Transactions\n";
 		cout << setw(37) << " " << "[7] Manage Users\n";
-		cout << setw(37) << " " << "[8] Login Register\n";
-		cout << setw(37) << " " << "[9] Logout\n\n";
+		cout << setw(37) << " " << "[8] Logout\n\n";
 		cout << clsUtil::Tabs(4) << "==============================================================\n";
 		_PerfromMainMenueOption(enMainMenueOptions(_ReadMainManueOption()));
 
