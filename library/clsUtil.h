@@ -207,7 +207,7 @@ static string Tabs(int num) {
 	}
 	return Tab;
 }
-static string EncryptText(string Text, short EncryptionKey)
+static string EncryptText(string Text, short EncryptionKey=2)
 {
 	for (int i = 0; i < Text.length(); i++)
 	{
@@ -215,7 +215,7 @@ static string EncryptText(string Text, short EncryptionKey)
 	}
 	return Text;
 }
-static string DecryptText(string Text, short EncryptionKey)
+static string DecryptText(string Text, short EncryptionKey=2)
 {
 	for (int i = 0; i < Text.length(); i++)
 	{

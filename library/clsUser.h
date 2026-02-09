@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include"clsDate.h"
+#include"clsUtil.h"
 using namespace std;
 class clsUser : public clsPerson
 {
@@ -18,6 +19,7 @@ private:
     string _Password;
     int _Permissions;
     bool _MarkedForDelete = false;
+  
     struct  stLoginRegister;
     
      string _ConvertUsersLoginToString(string Delim="#//#") {
@@ -25,7 +27,7 @@ private:
         string Line = "";
         Line += clsDate::DataToStringWithSeconds() + Delim;
         Line += UserName + Delim;
-        Line += Password + Delim;
+        Line +=clsUtil::EncryptText(Password) + Delim;
         Line += to_string(Permissions);
         return Line;
 
@@ -37,7 +39,7 @@ private:
         vUserData = clsString::Split(Line, Seperator);
 
         return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2],
-            vUserData[3], vUserData[4], vUserData[5], stoi(vUserData[6]));
+            vUserData[3], vUserData[4], clsUtil::DecryptText(vUserData[5]), stoi(vUserData[6]));
 
     }
 
@@ -50,7 +52,7 @@ private:
         UserRecord += User.Email + Seperator;
         UserRecord += User.Phone + Seperator;
         UserRecord += User.UserName + Seperator;
-        UserRecord += User.Password + Seperator;
+        UserRecord +=clsUtil::EncryptText(User.Password) + Seperator;
         UserRecord += to_string(User.Permissions);
 
         return UserRecord;
@@ -190,7 +192,7 @@ private:
 
       Register.Date = vRegister[0];
       Register.Username = vRegister[1];
-      Register.Password = vRegister[2];
+      Register.Password =clsUtil::DecryptText(vRegister[2]);
       Register.Permissions = stoi(vRegister[3]);
       return Register;
    }

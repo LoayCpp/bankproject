@@ -10,14 +10,18 @@ class clsBankClient :public clsPerson
 {
 private:
 
-
-
+	
+	
+	struct stRecordTransfer;
 	enum enMode{EmptyMode=0,UpdateMode=1,AddModeClient=2};
 	string _AccountNumber;
 	string _PinCode;
 	double _Balance;
 	enMode _Mode;
 	bool _MarkDelete=false;
+
+
+
 	static clsBankClient _ConvertLineClientToObject(string Line,string Delim="#//#") {
 
 		vector<string> vClientData = clsString::Split(Line,Delim);
@@ -132,10 +136,84 @@ private:
 
 	}
 
+	 string _ConvertRecordTransferToString(double Amount,clsBankClient ClientDistinatino,string username,string Delim="#//#") {
 
+		string Line = "";
+		Line += clsDate::DataToStringWithSeconds() + Delim;
+		Line += AccountNumber + Delim;
+		Line += ClientDistinatino.AccountNumber + Delim;
+		Line += to_string(Balance )+ Delim;
+		Line += to_string(ClientDistinatino.Balance) + Delim;
+		Line += to_string(Amount) + Delim;
+		Line += username;
 
+		return Line;
+	}
+	 void _WriteTransferInFile(double Amount, clsBankClient& ClientDestination, string username) {
+
+		fstream myFile;
+		myFile.open("TransferRecord.txt", ios::out | ios::app);
+		if (myFile.is_open()) {
+			string Line;
+			Line = _ConvertRecordTransferToString(Amount,ClientDestination, username);
+			myFile << Line << endl;
+
+		}
+
+		myFile.close();
+
+	}
+	static stRecordTransfer _ConvertStringTostRecord(string Line,string Delim="#//#") {
+		stRecordTransfer Record;
+		vector<string> vInfoRecord = clsString::Split(Line, Delim);
+		Record.Date = vInfoRecord[0];
+		Record.SourceAccountNumber= vInfoRecord[1];
+		Record.DestinationAccountNumber = vInfoRecord[2];
+		Record.SourceAmount = stod(vInfoRecord[3]);
+		Record.DestinationAmount= stod(vInfoRecord[4]);
+		Record.Amount = stod(vInfoRecord[5]);
+		Record.UserName = vInfoRecord[6];
+		return Record;
+	 }
 
 public:
+	
+	struct stRecordTransfer
+	{
+		string Date, SourceAccountNumber, DestinationAccountNumber, UserName;
+		double Amount, SourceAmount, DestinationAmount;
+	};
+
+	static vector<stRecordTransfer> LoadRecordTransferFromFile() {
+
+
+		fstream myfile;
+		vector<stRecordTransfer> vRecords;
+		myfile.open("TransferRecord.txt", ios::in);
+		if(myfile.is_open()){
+			string Line;
+			while (getline(myfile, Line)) {
+
+				stRecordTransfer Record;
+				Record = _ConvertStringTostRecord(Line);
+				vRecords.push_back(Record);
+
+
+
+		}
+			myfile.close();
+		
+		
+		
+		
+		}
+
+		return vRecords;
+
+
+
+
+	}
 	clsBankClient(enMode Mode,string FirstName, string LastName, string Email, string Phone, string AccountNumber, string PinCode,double  Balance)
 		:clsPerson(FirstName, LastName, Email, Phone) {
 		_Mode = Mode;
@@ -317,6 +395,18 @@ public:
 
 		 }
 		 return true;
+	 }
+
+	 bool TransferClient(double Amount, clsBankClient& ClientDestination,string UserName) {
+
+		 if (Amount > Balance) {
+			 return false;
+		 }
+		 Withdraw(Amount);
+		 ClientDestination.Deposit(Amount);
+		 _WriteTransferInFile(Amount, ClientDestination, CurrentUser.UserName);
+		 return true;
+
 	 }
 };
 
