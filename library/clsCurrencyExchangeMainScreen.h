@@ -3,6 +3,9 @@
 #include<iomanip>
 #include"clsInputValidate.h"
 #include"clsListCurrencyScreen.h"
+#include"clsFindCurrencyScreen.h"
+#include"clsUpdateCurrencyRate.h"
+#include"clsCurrencyCalculatorScreen.h"
 class clsCurrencyExchangeMainScreen :protected clsScreen
 {
 	enum enoption
@@ -38,21 +41,21 @@ class clsCurrencyExchangeMainScreen :protected clsScreen
 	static void _ShowFindCurrencyScreen() {
 
 
-		cout << "this is Find Currency Screen\n";
+		clsFindCurrencyScreen::_ShowFindCurrencyScreen();
 
 
 	}
 	static void _ShowUpdateCurrencyScreen() {
 
 
-		cout << "this is Update Currency Screen\n";
-
+		
+		clsUpdateCurrencyRate::_ShowUpdateCurrencyRate();
 
 	}
 	static void _ShowCurrencyCalculatorScreen() {
 
 
-		cout << "this is Currency Calculator Screen\n";
+		clsCurrencyCalculatorScreen::_ShowCurrencyCalculator();
 
 
 	}

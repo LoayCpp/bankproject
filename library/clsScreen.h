@@ -13,10 +13,10 @@ protected:
     static void _DrawScreenHeader(string Title, string SubTitle = "")
     {
         cout<<clsUtil::Tabs(5) <<"___________________________________________";
-        cout << "\n\n"<< clsUtil::Tabs(5) << Title;
+        cout << "\n\n"<< clsUtil::Tabs(5) << clsUtil::ColorText(Title,clsUtil::Cyan);
         if (SubTitle != "")
         {
-            cout << "\n "<< clsUtil::Tabs(5) << SubTitle;
+            cout << "\n "<< clsUtil::Tabs(5) << clsUtil::ColorText(SubTitle, clsUtil::Cyan);
         }
         cout << "\n"<<clsUtil::Tabs(5) <<"___________________________________________\n";
         cout << "\n" << clsUtil::Tabs(5) <<"Date:"<< clsDate::DateToString(clsDate());

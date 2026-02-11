@@ -154,18 +154,18 @@ public:
 		_DrawScreenHeader("\t\tMain Screen");
 
 		cout << clsUtil::Tabs(4) << "==============================================================\n";
-		cout << setw(60)<<left<<" " << "Main Menue\n";
+		cout << setw(60)<<left<<" " <<clsUtil::ColorText("Main Menue\n",clsUtil::Cyan);
 		cout << clsUtil::Tabs(4) << "==============================================================\n\n";
-		cout << setw(37) << " " << "[1]  Show Client List\n";
-		cout << setw(37) << " " << "[2]  Add New Client\n";
-		cout << setw(37) << " " << "[3]  Delete Client\n";
-		cout << setw(37) << " " << "[4]  Update Client Info\n";
-		cout << setw(37) << " " << "[5]  Find Client\n";
-		cout << setw(37) << " " << "[6]  Transactions\n";
-		cout << setw(37) << " " << "[7]  Manage Users\n";
-		cout << setw(37) << " " << "[8]  Login Register\n";
-		cout << setw(37) << " " << "[9]  Currency Exhange\n";
-		cout << setw(37) << " " << "[10] Logout\n\n";
+		cout << setw(37) << " " << clsUtil::ColorText("[1]  Show Client List\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[2]  Add New Client\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[3]  Delete Client\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[4]  Update Client Info\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[5]  Find Client\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[6]  Transactions\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[7]  Manage Users\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[8]  Login Register\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[9]  Currency Exhange\n",clsUtil::Green);
+		cout << setw(37) << " " << clsUtil::ColorText("[10] Logout\n\n",clsUtil::Green);
 		cout << clsUtil::Tabs(4) << "==============================================================\n";
 		_PerfromMainMenueOption(enMainMenueOptions(_ReadMainManueOption()));
 

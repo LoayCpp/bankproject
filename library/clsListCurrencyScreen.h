@@ -2,12 +2,12 @@
 #include"clsScreen.h"
 #include<iomanip>
 #include"clsCurrency.h"
-class clsListCurrencyScreen: protected clsScreen
+class clsListCurrencyScreen : protected clsScreen
 {
 	static void _PrintCurrencyInfo(clsCurrency C) {
 		cout << setw(8) << left << "" << "|" << setw(30) << left << C.Country();
 		cout << "|" << setw(8) << left << C.CurrencyCode();
-		cout << "|" << setw(30) << left <<C.CurrencyCountry();
+		cout << "|" << setw(30) << left << C.CurrencyCountry();
 		cout << "|" << setw(8) << left << C.Rate();
 
 	}
@@ -24,7 +24,7 @@ public:
 		cout << setw(8) << left << "" << "|" << setw(30) << left << " Country";
 		cout << "|" << setw(8) << left << " Code";
 		cout << "|" << setw(30) << left << " Name";
-		cout << "|" << setw(8) << left << " Rate/(1$)"<<endl;
+		cout << "|" << setw(8) << left << " Rate/(1$)" << endl;
 		cout << setw(8) << left << "" << "---------------------------------------------------------------------------------------\n";
 
 		if (vCurrency.size() == 0) {

@@ -42,6 +42,14 @@ C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsAddNewUserScreen.h(75,1
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUpdateUserScreen.h(79,17): warning C4129: 'R': unrecognized character escape sequence
   (compiling source file 'Bank3_corse8.cpp')
   
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUpdateCurrencyRate.h(46,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank3_corse8.cpp')
+  
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsCurrencyCalculatorScreen.h(29,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank3_corse8.cpp')
+  
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsBankClient.h(361,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
 C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsUser.h(384,1): warning C4715: 'clsUser::Save': not all control paths return a value
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsFindCurrencyScreen.h(59,1): warning C4715: 'clsFindCurrencyScreen::_CurrencyByCodeOrCountry': not all control paths return a value
+C:\Users\loaya\Desktop\GitHubLoay\bankproject\library\clsCurrency.h(220,1): warning C4715: 'clsCurrency::FindByCountry': not all control paths return a value
   Bank3_corse8.vcxproj -> C:\Users\loaya\Desktop\GitHubLoay\bankproject\x64\Debug\Bank3_corse8.exe
